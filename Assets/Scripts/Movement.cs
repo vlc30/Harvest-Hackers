@@ -51,8 +51,7 @@ public class Movement : MonoBehaviour
             if(direction.x != 0f)
                 lastHorizontal = direction.x;
 
-            // Flip sprite based on last horizontal direction
-            spriteRenderer.flipX = lastHorizontal < 0f;
+
         }
     }
 }
