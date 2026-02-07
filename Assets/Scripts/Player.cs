@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
   public Inventory inventory;
 
-  private voide Awake()
+  private void Awake()
     {
         inventory = new Inventory(21);
     }

@@ -36,7 +36,7 @@ public class Inventory
         }
     }
     // list of slots for items
-    public List<Slot> slots = new List<Slots>();
+    public List<Slot> slots = new List<Slot>();
 
     public Inventory(int numSlots)
     {
@@ -63,7 +63,7 @@ public class Inventory
         foreach (Slot slot in slots)
         {
             // slot empty --> add item to slot
-            if (slot.type == CollectbleType.NONE)
+            if (slot.type == CollectableType.NONE)
             {
                 slot.AddItem(typeToAdd);
                 return;

@@ -6,7 +6,7 @@ public class Collectable : MonoBehaviour
     //player walks into collectable
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.getComponent<Player>();
+        Player player = collision.GetComponent<Player>();
 
         //add collectable to player
         if (player)
@@ -17,9 +17,8 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public enum CollectableType
+}
+public enum CollectableType
     {
         NONE, CARROT_SEED, TOMATO_SEED, BROCCOLI_SEED
     }
-
-}
