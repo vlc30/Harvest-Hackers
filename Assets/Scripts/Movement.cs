@@ -1,58 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float speed = 2f;
-
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    private float lastHorizontal = 1f; // default facing right
-
-    void Start()
-    {
-        // Get Animator and SpriteRenderer from Visuals child
-        animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
-        if(animator == null)
-            Debug.LogError("Animator not found on " + gameObject.name);
-        if(spriteRenderer == null)
-            Debug.LogError("SpriteRenderer not found on " + gameObject.name);
-    }
+    public float speed = 5f;
 
     void Update()
     {
-        // Get input
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 v = Keyboard.current != null
+            ? new Vector2(
+                (Keyboard.current.dKey.isPressed ? 1 : 0) - (Keyboard.current.aKey.isPressed ? 1 : 0),
+                (Keyboard.current.wKey.isPressed ? 1 : 0) - (Keyboard.current.sKey.isPressed ? 1 : 0)
+              )
+            : Vector2.zero;
 
-        Vector3 direction = new Vector3(horizontal, vertical, 0f);
-
-        // Move the player
+        Vector3 direction = new Vector3(v.x, v.y, 0f).normalized;
         transform.position += direction * speed * Time.deltaTime;
-
-        // Animate
-        AnimateMovement(direction);
-    }
-
-    void AnimateMovement(Vector3 direction)
-    {
-        if(animator == null) return;
-
-        bool isMoving = direction.magnitude > 0f;
-        animator.SetBool("isMoving", isMoving);
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-
-        if(spriteRenderer != null)
-        {
-            // Only update last horizontal when player is pressing left/right
-            if(direction.x != 0f)
-                lastHorizontal = direction.x;
-
-            // Flip sprite based on last horizontal direction
-            spriteRenderer.flipX = lastHorizontal < 0f;
-        }
     }
 }
