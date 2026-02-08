@@ -50,6 +50,9 @@ TagManager:
   - name: Characters
     uniqueID: 2240918685
     locked: 0
+  - name: Cobbled stuff
+    uniqueID: 1214858817
+    locked: 0
   - name: Foreground
     uniqueID: 4006844653
     locked: 0
