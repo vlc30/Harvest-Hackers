@@ -50,6 +50,7 @@ public class Movement : MonoBehaviour
             // Only update last horizontal when player is pressing left/right
             if(direction.x != 0f)
                 lastHorizontal = direction.x;
+            
 
 
         }
