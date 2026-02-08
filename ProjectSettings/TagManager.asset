@@ -53,6 +53,9 @@ TagManager:
   - name: Cobbled stuff
     uniqueID: 1214858817
     locked: 0
+  - name: Farm crops
+    uniqueID: 194143487
+    locked: 0
   - name: Foreground
     uniqueID: 4006844653
     locked: 0
